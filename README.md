@@ -1,35 +1,39 @@
-Microservices
+# Spring Microservices in Action: 2nd Ed. - Notes
 
 
-12 Factors:
-	1. One codebase tracked in revision control, many deploys/instances (code & app is 1:1). OneHome is a distributed system, each component is an app. 
-	2. Explicitly declare and isolate dependencies (don't share between apps)
-	3. Store config in the environment - Config varies substantially across deploys, code does not. Store as env vars, not config files!!!
-	4. Backing Services - can be changed via configuratin alone. No code changes nessessary
-	5. Build, Release, Run - releases are append only ledgers; they are immutable. Builds happen on code merge. Release can be optional. 
-	6. Processes - processes never store state (e.g. sticky sessions). 
-	7. Port Binding - does not rely on runtime injection of a webserver. The web app exports HTTP as a service by binding to a port.
-	8. Concurrency - Scale out ... ? 
-	9. Disposability - they can be started or stopped at a moment’s notice. This facilitates elastic scaling
-	10. Dev/Prod Parity - problem: time gap, personnel gap, tools gap (I will add the data gap)
-	11. Logs - Treat logs as event streams. Routing of logs is external to the app, managed by the environment (discrepancy)
-	12. Admin Processes - Run admin/management tasks as one-off processes. They run against a release, using the same codebase and config as any process run against that release.
+### 12 Factor App:
+1. One codebase tracked in revision control, many deploys/instances (code & app is 1:1). OneHome is a distributed system, each component is an app. 
+2. Explicitly declare and isolate dependencies (don't share between apps)
+3. Store config in the environment - Config varies substantially across deploys, code does not. Store as env vars, not config files!!!
+4. Backing Services - can be changed via configuratin alone. No code changes nessessary
+5. Build, Release, Run - releases are append only ledgers; they are immutable. Builds happen on code merge. Release can be optional. 
+6. Processes - processes never store state (e.g. sticky sessions). 
+7. Port Binding - does not rely on runtime injection of a webserver. The web app exports HTTP as a service by binding to a port.
+8. Concurrency - Scale out ... ? 
+9. Disposability - they can be started or stopped at a moment’s notice. This facilitates elastic scaling
+10. Dev/Prod Parity - problem: time gap, personnel gap, tools gap (I will add the data gap)
+11. Logs - Treat logs as event streams. Routing of logs is external to the app, managed by the environment (discrepancy)
+12. Admin Processes - Run admin/management tasks as one-off processes. They run against a release, using the same codebase and config as any process run against that release.
 
-Decomposing Monoliths:
-	Right-Sizing Microservices: 
-		- It's better to start with broad, course-grained microservices and refactor to smaller 
-		- Focus first on how the microservices will interact with each other (embrace REST, use URIs to indicate intent, JSON for request/response, and HTTP status codes to communicate results)
-		- Service responsibilities change over time as our understanding of the problem domain grows
-		Smells: 
-			Too coarse: 
-				A service with too many responsibilities
-				A service that manages data across a large number of tables
-				A service with too many test cases (may be doing too much)
-			Too fine grained: 
-				The microservices in one part of the problem domain breed like rabbits.
-				Your microservices are heavily interdependent on one another
-				Your microservices become a collection of simple CRUD (Create, Replace, Update, Delete) services
-		A microservices architecture should be developed with an evolutionary thought process, where you know that you aren’t going to get the design right the first time. That is why it’s better to start with your first set of services being more coarse-grained than fine-grained.
+### Decomposing Monoliths:
+#### Right-Sizing Microservices: 
+- It's better to start with broad, course-grained microservices and refactor to smaller 
+- Focus first on how the microservices will interact with each other (embrace REST, use URIs to indicate intent, JSON for request/response, and HTTP status codes to communicate results)
+- Service responsibilities change over time as our understanding of the problem domain grows <br>
+
+
+#### Smells
+**Too coarse**
+- A service with too many responsibilities
+- A service that manages data across a large number of tables
+- A service with too many test cases (may be doing too much)
+
+**Too fine grained**
+- The microservices in one part of the problem domain breed like rabbits
+- Your microservices are heavily interdependent on one another
+- Your microservices become a collection of simple CRUD (Create, Replace, Update, Delete) services
+
+A microservices architecture should be developed with an evolutionary thought process, where you know that you aren’t going to get the design right the first time. That is why it’s better to start with your first set of services being more coarse-grained than fine-grained.
 
 
 
