@@ -34,6 +34,7 @@
 - Your microservices become a collection of simple CRUD (Create, Replace, Update, Delete) services
 
 A microservices architecture should be developed with an evolutionary thought process, where you know that you aren’t going to get the design right the first time. That is why it’s better to start with your first set of services being more coarse-grained than fine-grained.
+Microservice architectures are 'emergent'. 
 
 
 
