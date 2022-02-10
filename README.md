@@ -104,3 +104,30 @@ Microservice Metrics pattern
 
 Pg 55 for deployment lifecycle diagram 
 
+
+
+## Spring Cloud Configs
+Link: https://cloud.spring.io/spring-cloud-config/reference/html/#_quick_start
+When adding applicaiton configs, can do in the following way:
+	- <application-name>.properties <--- default
+	- <application-name>-non-prod.properties
+	- <application-name>-prod.properties
+When querying the REST api for any specific profile, that profile and the "default" configs are returned. This is because Config clients will fill 
+in any non-existing profile properties with the defaults. This behavior belongs to the clients, not the API. 
+
+Can read from :
+1. Filesystem/classpath
+2. VCS backed configs (e.g. Git)
+3. Hashicorp Vault
+
+To run in filesystem or classpath mode, run with the 'native' profile and following configs:
+```yaml
+
+  cloud:
+    config:
+      server:
+        native:
+#          search-locations: file:///Users/some-dir/some-file # file system
+          search-locations: classpath:/config                # classpath
+
+```
